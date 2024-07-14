@@ -1,0 +1,53 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="filters">
+    <div class="filter">
+        <i class="filter-icons fa-solid fa-fire"></i>
+        <p>Trending</p>
+    </div>
+    <div class="filter">
+        <i class="filter-icons fa-solid fa-bed"></i>
+        <p>Rooms</p>
+    </div>
+    <div class="filter">
+        <i class="filter-icons fa-solid fa-person-swimming"></i>
+        <p>Amazing Pools</p>
+    </div>
+    <div class="filter">
+        <i class="filter-icons fa-solid fa-mountain"></i>
+        <p>Mountains</p>
+    </div>
+    <div class="filter">
+        <i class="filter-icons fa-solid fa-ship"></i>
+        <p>Boats</p>
+    </div>
+    <div class="filter">
+        <i class="filter-icons fa-brands fa-fort-awesome"></i>
+        <p>Castles</p>
+    </div>
+    <div class="filter">
+        <i class="filter-icons fa-solid fa-snowflake"></i>
+        <p>Artic</p>
+    </div>
+    <div class="filter">
+        <i class="filter-icons fa-solid fa-cow"></i>
+        <p>Farms</p>
+    </div>
+</div>
+
+<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+    <% for(let listing of allListings) { %>
+        <a href="/listings/<%= listing._id%>" class="listing-link">
+            <div class="card col card-idx">
+                <img src="<%= listing.image.url %>" class="card-img-top" alt="" style="height: 20rem;">
+                <div class="card-body">
+                    <p class="card-text">
+                        <b><%= listing.title %></b>
+                        <br>
+                        ₹<%= listing.price %> / night
+                    </p>
+                </div>
+            </div>
+        </a>
+    <% } %>
+</div>

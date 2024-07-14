@@ -1,0 +1,106 @@
+<!-- <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/listings"><i class="fa-solid fa-compass"></i></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <a class="nav-link" href="/listings">Explore</a>
+        
+      <form class="navbar-nav ms-auto search-form" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </form>
+
+    <div class="navbar-nav ms-auto">
+        <a class="nav-link" href="/listings/new">Add new Listing</a>
+        <% if(!currUser) { %> 
+            <form class="me-2" action="/account/signup" method="get"><button class="btn btn-warning">SignUp</button></form>
+            <form class="me-2" action="/account/login" method="get"><button class="btn btn-warning">Login</button></form>
+            <% } %> 
+            <% if(currUser) { %> 
+            <form class="me-2" action="/account/logout" method="get"><button class="btn btn-warning">Logout</button></form>
+            <% } %> 
+          </div>
+        </div>
+      </div>
+    </nav> -->
+    
+    <div class="Navbar">
+      <!-- logo -->
+       <div class="Navbar-logo">
+        <a href="/listings"><i class="fa-solid fa-compass"></i></a>
+        <a href="/listings" style="margin-left: 1rem;">Explore</a>
+       </div>
+    
+      <!-- Search -->
+      <form class="Navbar-Search">
+        <input class="form-control" type="search" placeholder="Search">
+        <button class=""><i class="fa-solid fa-magnifying-glass"></i></button>
+      </form>
+    
+       <!-- add new Listing -->
+       <a href="/listings/new">Add new Listing</a>
+    
+      <!-- User -->
+      <div class="Navbar-account">
+        <div class="btn-group">
+          <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-user user-account-logo"></i></button>
+          <ul class="dropdown-menu">
+            <% if(!currUser) { %> 
+            <li><a class="dropdown-item" href="/account/signup">SignUp</a></li>
+            <li><a class="dropdown-item" href="/account/login">Login</a></li>
+            <% } %>
+            <% if(currUser) { %>
+            <li><a class="dropdown-item" href="/account/logout">Logout</a></li>
+            <% } %>
+          </ul>
+        </div>
+       </div>
+    
+       <div>
+        <!-- menu -->
+          <i class="fa-solid fa-bars"></i>
+        </div>
+    
+        <div><!-- x mark -->
+          <i class="fa-solid fa-xmark"></i>
+        </div>
+    
+    </div>
+    
+    
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Add new Listing</a>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+          <div class="btn-group ms-auto">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-user user-account-logo"></i></button>
+            <ul class="dropdown-menu">
+              <% if(!currUser) { %> 
+              <li><a class="dropdown-item" href="/account/signup">SignUp</a></li>
+              <li><a class="dropdown-item" href="/account/login">Login</a></li>
+              <% } %>
+              <% if(currUser) { %>
+              <li><a class="dropdown-item" href="/account/logout">Logout</a></li>
+              <% } %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
