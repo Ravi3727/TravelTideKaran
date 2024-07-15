@@ -102,7 +102,9 @@ app.use("/listings/:id/reviews", reviews);
 const User = require('./routes/user.js');
 app.use("/account", User);
 
-
+// footer routes
+const footer = require('./routes/footer.js');
+app.use("/footer", footer);
 
 
 
