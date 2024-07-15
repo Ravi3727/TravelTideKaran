@@ -117,7 +117,7 @@ router.post("/search", wrapAsync (async (req,res)=> {
         return res.redirect("/listings");
     }
 
-    res.render("listings/searchresults.ejs" , {allListings});
+    res.render("listings/searchResults.ejs" , {allListings});
 }))
 
 module.exports = router;
