@@ -97,4 +97,27 @@ router.get("/:id/reviews", wrapAsync (async (req,res)=> {
     res.redirect(`/listings/${id}`);
 }))
 
+
+// search by country
+router.post("/search", wrapAsync (async (req,res)=> {
+    let {country} = req.body;
+    country = country.trim();      // trim function to remove leading zeroes
+
+    // regex for case sensitive Input 
+    const searchPatterns = [
+        { country: { $regex: new RegExp(`^${country}$`, 'i') } },
+        { location: { $regex: new RegExp(`^${country}\\s*$`, 'i') } },
+    ];
+
+    let allListings = await Listing.find({ $or: searchPatterns });
+
+    // agar Country nahi Milti
+    if(allListings.length === 0) {
+        req.flash('error', `No destination found in ${country}`);
+        return res.redirect("/listings");
+    }
+
+    res.render("listings/searchresults.ejs" , {allListings});
+}))
+
 module.exports = router;

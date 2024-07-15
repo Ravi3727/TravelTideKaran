@@ -20,8 +20,8 @@ main()
     .catch((err) => console.log(err))
 
 async function main() {
-    // await mongoose.connect('mongodb://127.0.0.1:27017/wanderlust');
-    await mongoose.connect(process.env.ATLAS_URL);
+    await mongoose.connect('mongodb://127.0.0.1:27017/wanderlust');
+    // await mongoose.connect(process.env.ATLAS_URL);
 }
 
 app.set("view engine", "ejs");
@@ -105,8 +105,6 @@ app.use("/account", User);
 // footer routes
 const footer = require('./routes/footer.js');
 app.use("/footer", footer);
-
-
 
 
 

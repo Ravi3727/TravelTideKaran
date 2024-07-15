@@ -27,8 +27,8 @@
           </ul>
         </li>
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2 navbar-Search" type="search" placeholder="Search" aria-label="Search">
+      <form class="d-flex  needs-validation" method="post" action="/listings/search" novalidate>
+        <input name="country" class="form-control me-2 navbar-Search" type="search" placeholder="Search" required>
         <button class="navbar-Search navbar-Search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
       </form>
     </div>

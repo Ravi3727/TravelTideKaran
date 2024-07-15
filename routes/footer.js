@@ -4,15 +4,15 @@ const multer  = require('multer');
 const {storage} = require('../cloudConfig.js');
 
 router.get("/privacy", (req,res)=> {
-    res.render("privacy.ejs");
+    res.render("footer/privacy.ejs");
 })
 
 router.get("/terms", (req,res)=> {
-    res.render("T&C.ejs");
+    res.render("footer/T&C.ejs");
 })
 
 router.get("/ContactUs", (req,res)=> {
-    res.render("ContactUs.ejs");
+    res.render("footer/ContactUs.ejs");
 })
 
 router.get("/helpDone", (req,res)=> {
