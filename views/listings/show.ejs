@@ -11,6 +11,11 @@
                 <li><%= listing.location %></li>
                 <li><%= listing.country %></li>
             </div>
+            <% if(!currUser || !currUser._id.equals(listing.owner._id)) { %>
+            <form class="d-grid gap-2 col-6 offset-3 mx-auto" method="get" action="/listings/<%=listing._id%>/payment">
+                <button class="btn btn-primary">Confirm</button>
+            </form>
+            <% } %>
         </div>
 
         <% if(currUser && currUser._id.equals(listing.owner._id)) { %>

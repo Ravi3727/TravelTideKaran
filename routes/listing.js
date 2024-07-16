@@ -120,4 +120,12 @@ router.post("/search", wrapAsync (async (req,res)=> {
     res.render("listings/searchResults.ejs" , {allListings});
 }))
 
+
+// listing payment page 
+router.get("/:id/payment", wrapAsync (async (req,res)=> {
+    let {id} = req.params;
+    let currListing = await Listing.findById(id);
+    res.render("listings/paymentPage.ejs", {currListing});
+}))
+
 module.exports = router;

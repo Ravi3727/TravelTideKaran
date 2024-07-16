@@ -1,4 +1,6 @@
-require('dotenv').config();
+if(process.env.NODE_ENV != "production") {
+    require('dotenv').config();
+}
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
@@ -7,11 +9,14 @@ const methodOverride = require('method-override');
 const ejsMate = require('ejs-mate');
 const ExpressError = require("./utils/ExpressError");
 const session = require('express-session');
+const MongoStore = require('connect-mongo');
 const flash = require('connect-flash');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const user = require('./models/user.js');
-const MongoStore = require('connect-mongo');
+
+// let DB_url = 'mongodb://127.0.0.1:27017/wanderlust';
+let DB_url = process.env.ATLAS_URL;
 
 main()
     .then(()=> {
@@ -20,8 +25,7 @@ main()
     .catch((err) => console.log(err))
 
 async function main() {
-    // await mongoose.connect('mongodb://127.0.0.1:27017/wanderlust');
-    await mongoose.connect(process.env.ATLAS_URL);
+    await mongoose.connect(DB_url);
 }
 
 app.set("view engine", "ejs");
@@ -35,7 +39,7 @@ app.use(express.json());
 app.use(methodOverride('_method'));
 
 const store = MongoStore.create({
-    mongoUrl: process.env.ATLAS_URL,
+    mongoUrl: DB_url,
     crypto: {
         secret: process.env.SECRET,
     },
@@ -48,7 +52,7 @@ store.on("err", ()=> {
 
 // session and flash
 app.use(session({
-    store,
+    store: store,
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
