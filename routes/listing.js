@@ -125,7 +125,7 @@ router.post("/search", wrapAsync (async (req,res)=> {
 router.get("/:id/payment", wrapAsync (async (req,res)=> {
     let {id} = req.params;
     let currListing = await Listing.findById(id);
-    res.render("listings/PaymentPage.ejs", {currListing});
+    res.render("listings/paymentpage.ejs", {currListing});
 }))
 
 module.exports = router;
