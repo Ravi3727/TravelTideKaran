@@ -72,16 +72,6 @@ passport.use(new LocalStrategy(user.authenticate()));
 passport.serializeUser(user.serializeUser());
 passport.deserializeUser(user.deserializeUser());
 
-
-let port = 3000;
-app.listen(port, ()=> {
-    console.log(`listening on port ${port}`);
-})
-// app.get("/", (req,res)=> {
-//     res.send("this is root")
-// })
-
-
 // flash errors
 app.use((req,res,next) => {
     res.locals.success = req.flash('success');
@@ -91,7 +81,13 @@ app.use((req,res,next) => {
 })
 
 
-
+let port = 3000;
+app.listen(port, ()=> {
+    console.log(`listening on port ${port}`);
+})
+app.get("/", (req,res)=> {
+    res.redirect("/listings");
+})
 
 
 // listing routes
@@ -124,3 +120,8 @@ app.use((err,req,res,next) => {
     let {status=500,message="Some error occured"} = err;
     res.status(status).render("listings/error.ejs", {err});
 })
+
+
+
+
+

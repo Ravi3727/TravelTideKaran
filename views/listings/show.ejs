@@ -11,9 +11,13 @@
                 <li><%= listing.location %></li>
                 <li><%= listing.country %></li>
             </div>
-            <br>
             <% if(!currUser || !currUser._id.equals(listing.owner._id)) { %>
-            <form class="d-grid gap-2 col-6 offset-3 mx-auto" method="get" action="/listings/<%=listing._id%>/payment">
+            <form class="d-grid gap-2 col-6 offset-3 mx-auto" method="post" action="/listings/<%=listing._id%>/payment">
+                <div>
+                <p style="display:inline-block;">Tickets :</p>
+                <input type="number" min="1" max="5" name="quantity" class=" col-4" required style="text-align: center;" required
+                oninvalid="this.setCustomValidity('min 1 and max 5 tickets are available')" oninput="this.setCustomValidity('')">
+                </div>
                 <button class="btn btn-primary">Confirm</button>
             </form>
             <% } %>
@@ -40,7 +44,7 @@
 <form class="col-8 offset-3 mb-4 needs-validation box-review" novalidate action="/listings/<%= listing._id%>/reviews" method="post">
     <h4>Add a Review</h4>
     <fieldset class="starability-grow">
-        <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked aria-label="No rating." />
+        <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="3" checked aria-label="No rating." />
         <input type="radio" id="first-rate1" name="rating" value="1" />
         <label for="first-rate1" title="Terrible">1 star</label>
         <input type="radio" id="first-rate2" name="rating" value="2" />

@@ -7,6 +7,7 @@ const {isOwner} = require('../middlewares.js');
 const multer  = require('multer');
 const {storage} = require('../cloudConfig.js');
 const upload = multer({storage});
+const flash = require('connect-flash');
 
 // home page
 router.get("/", wrapAsync (async (req,res)=> {
@@ -122,10 +123,20 @@ router.post("/search", wrapAsync (async (req,res)=> {
 
 
 // listing payment page 
-router.get("/:id/payment", wrapAsync (async (req,res)=> {
+router.post("/:id/payment", isLoggedIn, wrapAsync (async (req,res)=> {
     let {id} = req.params;
     let currListing = await Listing.findById(id);
-    res.render("listings/paymentpage.ejs", {currListing});
+    res.render("listings/paymentpage.ejs", {currListing, quantity:req.body.quantity});
+}))
+
+// payment done page
+router.get("/:id/paymentdone/:tickets", isLoggedIn, wrapAsync (async (req,res)=> {
+    let {id,tickets} = req.params;
+
+    let currListing = await Listing.findById(id);
+
+    req.flash('success', 'Congratulations Payment Successfull !!!');
+    res.render("listings/receipt.ejs", {currListing, tickets, time:new Date() });
 }))
 
 module.exports = router;
